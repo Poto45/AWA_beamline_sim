@@ -7,6 +7,7 @@ The method of doing a full beamline simulation is:
 4. WarpX to propagate beam (uploaded from Opal-T) through the structure
 5. Elegant to optimize quadrupoles from end of structure to create beam waist at final Yag screen 
 6. Opal-T from end of structure to final Yag screen
+
 *** Sirepo was used for the Elegant portions and the information is also uploaded here.
 *** Opal-T and WarpX were run on Bebop/Swing, respectively; queue scripts are also uploaded here
 
