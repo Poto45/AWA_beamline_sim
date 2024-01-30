@@ -1,0 +1,114 @@
+import numpy as np
+import h5py as h5
+import scipy.constants as sc
+import makeopenpmd
+
+path2h4 = "/data1/aard/cphillips/bebop_opal/plotfiles/"
+path2h5 = "/data1/aard/cphillips/bebop_opal/mylinetest_no_opt/"
+
+h5file = 'fullbeamline.h5'
+h4file = 'dist_piot.h5'
+h4file = 'wx_input.h5'
+
+f1 = h5.File(path2h5+h5file,'r')
+f2 = h5.File(path2h4+h4file,'r')
+
+'''
+Description of the layout of dist_piot.h5 input data
+
+'data'
+'0'
+'particles'
+   'myparticle'
+      'position' (x,y,z), 'momentum' (x,y,z), 'charge' (idk)
+everything else is empty, so might be unneeded?
+'''
+
+'''
+print(f2.keys())
+data = f2['data']
+print(data.keys())
+zero = data['0']
+print(zero.keys())
+parts = zero['particles']
+print(parts.keys())
+
+mypart = parts['myparticle']
+print(mypart.keys())
+pos = mypart['position']
+print(pos.keys())
+mom = mypart['momentum']
+print(mom.keys())
+xnew = pos['x']
+xnew = np.array(xnew)
+print(xnew[0:10])
+
+#fields = zero['fields']
+#print(fields.keys())
+'''
+
+ts = [key for key in f1.keys()]
+
+
+lastts = f1[str(ts[-1])]
+
+x = lastts['x']
+x = np.array(x,dtype='float64')
+print(x)
+
+y = lastts['y']
+y = np.array(y,dtype='float64')
+
+z = lastts['z']
+z = np.array(z,dtype='float64')
+### momentum in Opal-T is given in beta*gamma; WARPX requires beta*gamma*m*c
+
+px = lastts['px']
+px = np.array(px,dtype='float64')
+px = px*sc.c*sc.m_e
+
+py = lastts['py']
+py = np.array(py,dtype='float64')
+py = py*sc.c*sc.m_e
+
+pz = lastts['pz']
+pz = np.array(pz,dtype='float64')
+pz = pz*sc.c*sc.m_e
+
+charge = lastts['q']
+charge = np.array(charge)
+bunchCharge = np.sum(charge)
+print(bunchCharge)
+#print(type(charge))
+#print(charge)
+makeopenpmd.make_openPMD(x,y,z,px,py,pz,'dist_opal.h5',bunchCharge)
+
+
+
+'''
+new = h5.File('wx_input.h5', 'w')
+
+g1 = new.create_group('data')
+ts = g1.create_group('0')
+parts = ts.create_group('particles')
+mypts = parts.create_group('myparticle')
+
+pos = mypts.create_group('position')
+xs = pos.create_dataset('x',data=x)
+ys = pos.create_dataset('y',data=y)
+zs = pos.create_dataset('z',data=z)
+
+
+mom = mypts.create_group('momentum')
+pxs = mom.create_dataset('x',data=px)
+pys = mom.create_dataset('y',data=py)
+pzs = mom.create_dataset('z',data=pz)
+
+
+
+chg = mypts.create_dataset('charge',data=charge)
+'''
+
+
+
+
