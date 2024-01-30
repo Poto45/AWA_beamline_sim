@@ -15,15 +15,19 @@ The method of doing a full beamline simulation is:
 ** Also created, a toy model of the Longitudinal Phase Space (LPS) measurement system. This is to just better understand the modulations and distortions of LPS. **
 
 ## Opal-T
-
+Currently, do not have a viable script to convert any distributions to Opal-T. 
 
 ## Elegant
 Input is SDDS file, but you also need the numerical value of the Central momentum of the beamline [MeV/c]. For individual particles' information, x, y, z are in [m], compared to where the reference particle are and the momenta are in $\beta \gamma$. These are the same units as used in Opal-T. 
-Process for Opal-T to Elegant:
-1. Opal-T outputs an h5 file with all information. 
+Process to Elegant:
+1. Opal-T and WarpX outputs an h5 file with all information. This h5 file has a different heirarchy than what is allowed for the hdf2sdds used on the Argonne clusters, so we must change it to txt.
+2. Use the 2Ele.py script to change it to a txt file. Changes are available for WarpX and Opal-T. This also prints the final momentum that is required to be manually input to Sirepo Elegant.
+3. Finally, change the txt file to SDDS for Elegant, using: /lcrc/project/Bright-Beams/software/pelegant/elegantTree_osc/epics/extensions/bin/linux-x86_64/plaindata2sdds {txtfile} {newSDDSfilename} -inputMode=ascii "-separator= " -column=x,double,units='m' -col=xp,double -col=y,double,units='m' -col=yp,double -col=t,double,units='s' -col=p,double,units='m$be$nc'
+4. To double check the SDDS conversion worked: /lcrc/project/Bright-Beams/software/pelegant/elegantTree_osc/epics/extensions/bin/linux-x86_64/sddsquery {SDDSfile}
+
 
 ## WarpX
-
+I have Opal-T to WarpX file, but it needs to be commented out. No need to create Elegant to WarpX right now. 
 
 
 
