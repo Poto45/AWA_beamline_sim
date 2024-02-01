@@ -16,6 +16,8 @@ The method of doing a full beamline simulation is:
 
 ## Opal-T
 Currently, do not have a viable script to convert any distributions to Opal-T. 
+Output units are:
+[$\beta \gamma$] 
 
 ## Elegant
 Input is SDDS file, but you also need the numerical value of the Central momentum of the beamline [MeV/c]. For individual particles' information, x, y, z are in [m], compared to where the reference particle are and the momenta are in $\beta \gamma$. These are the same units as used in Opal-T. 
@@ -27,7 +29,7 @@ Process to Elegant:
 
 
 ## WarpX
-I have Opal-T to WarpX file, but it needs to be commented out. No need to create Elegant to WarpX right now. 
+I have Opal-T to WarpX file, but it needs to be commented out. No need to create Elegant to WarpX right now. Output units are: [$\gamma v$] for momenta. 
 
 
 
