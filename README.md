@@ -16,11 +16,15 @@ The method of doing a full beamline simulation is:
 
 ## Opal-T
 Currently, do not have a viable script to convert any distributions to Opal-T. 
+
+Input units are:
+[]
 Output units are:
 [$\beta \gamma$] 
 
 ## Elegant
 Input is SDDS file, but you also need the numerical value of the Central momentum of the beamline [MeV/c]. For individual particles' information, x, y, z are in [m], compared to where the reference particle are and the momenta are in $\beta \gamma$. These are the same units as used in Opal-T. 
+Input SDDS for "elegant" (as apposed to "spiffe") requires (x [m], xp [dimensionless], y [m], yp [dimensionless], t [s], p [$\beta \gamma$])
 Process to Elegant:
 1. Opal-T and WarpX outputs an h5 file with all information. This h5 file has a different heirarchy than what is allowed for the hdf2sdds used on the Argonne clusters, so we must change it to txt.
 2. Use the 2Ele.py script to change it to a txt file. Changes are available for WarpX and Opal-T. This also prints the final momentum that is required to be manually input to Sirepo Elegant.
