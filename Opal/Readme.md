@@ -1,9 +1,9 @@
 Bebop through ANL was used to complete the opal optimization seen here. 
-Optimization function used was emit_x, rms_x, rms_s, and Nfit, to minimize emittance, beam size, and the number of particles lost. Nfit is the total number of starting particles minus the resulting "alive" particles.The case that was chosen and the following output parameters:
-rms_x = 0.0008464
-rms_y = 0.0008516
-rms_s = 0.0009653
-rms_ps = 0.3572975
+Optimization function used was emit_x, rms_x, rms_s, and Nfit, to minimize emittance, beam size, and the number of particles lost. Nfit is the total number of starting particles minus the resulting "alive" particles.The case that was chosen and the following output parameters:  
+rms_x = 0.0008464  
+rms_y = 0.0008516  
+rms_s = 0.0009653  
+rms_ps = 0.3572975  
 emit_x = 2.8227e-06
 emit_y = 2.8057e-06
 emit_s = 5.8153e-05
