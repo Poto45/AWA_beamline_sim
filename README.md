@@ -20,7 +20,7 @@ Currently, do not have a viable script to convert any distributions to Opal-T.
 Input units are:
 []
 Output units are:
-[$\beta \gamma$] 
+[$\beta_{x,y,z} \gamma$] 
 
 ## Elegant
 Input is SDDS file, but you also need the numerical value of the Central momentum of the beamline [MeV/c]. For individual particles' information, x, y, z are in [m], compared to where the reference particle are and the momenta are in $\beta \gamma$. These are the same units as used in Opal-T. 
